@@ -42,16 +42,44 @@ cpp-design-patterns/
 
 ---
 
-## Compilation
+## Build & Run
 
-Each example compiles independently:
+### Option 1: Using CMake (Recommended)
+
+**Build all patterns:**
+```bash
+cmake -S . -B build
+cmake --build build
+./build/behavioral/chain_of_responsibility/Debug/chain_of_responsibility.exe
+```
+
+**Build single pattern independently:**
+```bash
+cd behavioral/chain_of_responsibility
+cmake -S . -B build
+cmake --build build
+./build/Debug/chain_of_responsibility.exe
+```
+
+**Build with Google Test (for future unit tests):**
+```bash
+cmake -S . -B build -DBUILD_TESTS=ON
+cmake --build build
+ctest --output-on-failure
+```
+
+### Option 2: Manual Compilation
+
+Each pattern can be compiled directly without CMake:
 
 ```bash
 cd behavioral/chain_of_responsibility
-g++ -std=c++17 -Wall -o app main.cpp && ./app
+g++ -std=c++17 -Wall -I include -o app src/main.cpp && ./app
 ```
 
-No external dependencies. Requires a compiler with C++17 support (GCC 7+, Clang 5+, MSVC 2017+).
+---
+
+**Requirements:** C++17 compiler (GCC 7+, Clang 5+, MSVC 2017+). No external dependencies.
 
 ---
 
@@ -59,7 +87,8 @@ No external dependencies. Requires a compiler with C++17 support (GCC 7+, Clang 
 
 - Standard: **C++17**
 - Compiler: GCC / Clang / MSVC
-- No CMake — intentionally, to avoid obscuring the pattern code
+- Build System: **CMake 3.16+** (optional — manual compilation also supported)
+- Testing: **Google Test** (optional, enabled with `-DBUILD_TESTS=ON`)
 
 ---
 
