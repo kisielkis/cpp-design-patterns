@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <memory>
 
 #include "Ticket.h"
 
@@ -10,16 +11,16 @@
  */
 class Handler {
     public:
-        virtual Handler *SetNext(Handler *handler) = 0;
+        virtual std::shared_ptr<Handler> SetNext(const std::shared_ptr<Handler> &handler) = 0;
         virtual std::string Handle(Priority priority) = 0;
 };
 
 class SupportHandler : public Handler {
     private:
-        Handler *next_handler;
+        std::shared_ptr<Handler> next_handler;
 
     public:
-        Handler *SetNext(Handler *handler) override {
+        std::shared_ptr<Handler> SetNext(const std::shared_ptr<Handler> &handler) override {
             this->next_handler = handler;
             return handler;
         }
