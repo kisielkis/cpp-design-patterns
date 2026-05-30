@@ -17,7 +17,6 @@ cpp-design-patterns/
 └── structural/
 ```
 
-
 ---
 
 ## Patterns
@@ -47,6 +46,7 @@ cpp-design-patterns/
 ### Option 1: Using CMake (Recommended)
 
 **Build all patterns:**
+
 ```bash
 cmake -S . -B build
 cmake --build build
@@ -54,6 +54,7 @@ cmake --build build
 ```
 
 **Build single pattern independently:**
+
 ```bash
 cd behavioral/chain_of_responsibility
 cmake -S . -B build
@@ -61,10 +62,12 @@ cmake --build build
 ./build/Debug/chain_of_responsibility.exe
 ```
 
-**Build with Google Test (for future unit tests):**
+**Build with Google Test:**
+
 ```bash
-cmake -S . -B build -DBUILD_TESTS=ON
-cmake --build build
+cmake -S . -B build_tests -DBUILD_TESTS=ON
+cmake --build build_tests
+cd build_tests
 ctest --output-on-failure
 ```
 

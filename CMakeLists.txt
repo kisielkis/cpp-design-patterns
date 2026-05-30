@@ -6,6 +6,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 option(BUILD_TESTS "Build Google Test unit tests" OFF)
 
+if(BUILD_TESTS)
+    enable_testing()
+endif()
+
 add_subdirectory(behavioral)
 add_subdirectory(creational)
 add_subdirectory(structural)
