@@ -5,7 +5,6 @@
 #include <algorithm>
 #include <iostream>
 #include "ChatMediator.h"
-#include "User.h"
 
 class ChatRoom : public ChatMediator {
     private:
@@ -16,8 +15,7 @@ class ChatRoom : public ChatMediator {
         ChatRoom() : messageIdCounter(0) {};
 
         void sendMsg(const std::string &msg , const std::shared_ptr<ChatParticipant> &user) override {
-            auto *ptr = dynamic_cast<User*>(user.get());
-            if (ptr != nullptr) {
+            if (!user->isLogged()) {
                 user->receive("First LOGIN!");
             }
             messageIdCounter++;
@@ -26,9 +24,7 @@ class ChatRoom : public ChatMediator {
                 if (t_user == user) {
                     continue;
                 }
-                {
-                    t_user->receive(packetMsg);
-                }
+                t_user->receive(packetMsg);
             }
             std::cout << std::endl;
         }

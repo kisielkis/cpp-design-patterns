@@ -8,7 +8,8 @@ class User : public ChatParticipant {
     public:
         User(const std::string &name) : ChatParticipant(name) {}
 
-        void receive(const std::string &msg) {
+        bool isLogged() const noexcept override { return false; }
+        void receive(const std::string &msg) override {
             std::cout << "User received:" << msg << std::endl;
         }
 };

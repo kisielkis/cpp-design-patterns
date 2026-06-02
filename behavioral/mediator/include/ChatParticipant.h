@@ -8,7 +8,9 @@ class ChatParticipant {
 
     public:
         ChatParticipant(const std::string &userName) : name(userName) {};
-        const std::string& getName() const {return name;}
+        virtual ~ChatParticipant() = default;
 
+        const std::string& getName() const { return name; }
+        virtual bool isLogged() const noexcept { return false; }
         virtual void receive(const std::string &msg) = 0;
 };
