@@ -3,8 +3,6 @@
 
 #include <iostream>
 
-using namespace std;
-
 class SetMtuCommand : public Command {
     private:
         int mtuSize;
@@ -17,12 +15,12 @@ class SetMtuCommand : public Command {
         }
 
         bool execute () override {
-            cout << " set MTU size=" << mtuSize << endl;
+            std::cout << " set MTU size=" << mtuSize << std::endl;
             return true;
         }
 
         bool rollback () override {
-            cout << " rollback MTU size=" << mtuSize << endl;
+            std::cout << " rollback MTU size=" << mtuSize << std::endl;
             return true;
         }
 };

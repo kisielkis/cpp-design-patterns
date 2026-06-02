@@ -2,8 +2,6 @@
 
 #include <string>
 
-using namespace std;
-
 enum class Priority { LOW, MEDIUM, HIGH, CRITICAL, NONE};
 
 struct Ticket {

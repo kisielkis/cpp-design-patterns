@@ -5,29 +5,27 @@
 
 #include "Command.h"
 
-using namespace std;
-
 class AddBgpRouteCommand : public Command {
     private:
-        string network;
-        string nextHop;
+        std::string network;
+        std::string nextHop;
         int asNumber;
 
     public:
-        AddBgpRouteCommand(const string &net, const string &hop, int as)
+        AddBgpRouteCommand(const std::string &net, const std::string &hop, int as)
             : network(net), nextHop(hop), asNumber(as) {};
 
         bool execute() override {
-            cout << " add BGP route network=" << network
+            std::cout << " add BGP route network=" << network
                  << " nextHop=" << nextHop
-                 << " AS=" << asNumber << endl;
+                 << " AS=" << asNumber << std::endl;
             return true;
         }
 
         bool rollback() override {
-            cout << " rollback BGP route network=" << network
+            std::cout << " rollback BGP route network=" << network
                  << " nextHop=" << nextHop
-                 << " AS=" << asNumber << endl;
+                 << " AS=" << asNumber << std::endl;
             return true;
         }
 };

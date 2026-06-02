@@ -5,20 +5,19 @@
 
 #include "Command.h"
 
-using namespace std;
 
 class AddVlanCommand : public Command {
     private:
-        string VlanTag;
+        std::string VlanTag;
     public:
-        AddVlanCommand(const string &Vlan) : VlanTag(Vlan) {};
+        AddVlanCommand(const std::string &Vlan) : VlanTag(Vlan) {};
 
         bool execute() override {
-            cout << " add VlanTag=" << VlanTag << endl;
+            std::cout << " add VlanTag=" << VlanTag << std::endl;
             return true;
         }
          bool rollback() override {
-            cout << " rollback VlanTag=" << VlanTag << endl;
+            std::cout << " rollback VlanTag=" << VlanTag << std::endl;
             return true;
         }
 };
